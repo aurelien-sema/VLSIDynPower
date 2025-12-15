@@ -1,0 +1,23 @@
+Package: VLSIDynPower
+Title: Dynamic Power Analysis and Optimization for VLSI CIrcuits
+Version: 0.1.0
+Authors@R: 
+    person("Aurelien", "Sema", , "tankeuaurelien44@gmail.com.com", role = c("aut", "cre"))
+Description: Provides tools for calculating, and optimizing dynamic
+    power consumption in Very Large Scale Integration (VLSI) circuits,
+    including switching activity analysis and Zero Transition Coding (ZTC).
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Imports: 
+    dplyr,
+    gganimate,
+    ggplot2,
+    tidyr
+Suggests:
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+VignetteBuilder: knitr

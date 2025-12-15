@@ -1,0 +1,19 @@
+---
+title: "Introduction_a_la_puissance_dynamique_en_circuits_VLSI"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction_a_la_puissance_dynamique_en_circuits_VLSI}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(VLSIDynPower)
+```
