@@ -25,7 +25,7 @@
 #' @export
 plot_benchmark_power <- function(data_stream_original, data_stream_optimized, C_L_fixed, V_DD_fixed, f_fixed, output_filename_pdf = "benchmark_comparison") {
 
-  # 1. Préparation des données et calculs (comme précédemment)
+  # 1. Preparing data
   benchmark_results <- benchmark_power(data_stream_original, data_stream_optimized, C_L_fixed, V_DD_fixed, f_fixed)
   df <- benchmark_results[!is.na(benchmark_results$Total_Power_W), ]
 
@@ -34,7 +34,7 @@ plot_benchmark_power <- function(data_stream_original, data_stream_optimized, C_
   power_reduction_pct <- (abs(P_orig - P_opt) / P_orig) * 100
   y_max <- max(df$Total_Power_W) * 1.1
 
-  # --- 2. Création et Sauvegarde du PDF Statique ---
+  # --- 2. Creation et Sauvegarde du PDF Statique ---
   output_dir <- file.path("inst", "graphics")
   pdf_filename <- file.path(output_dir, paste0(output_filename_pdf, ".pdf"))
 
@@ -49,7 +49,7 @@ plot_benchmark_power <- function(data_stream_original, data_stream_optimized, C_
       subtitle = paste0("Reduction de puissance obtenue : ", round(power_reduction_pct, 2), "%"),
       x = NULL,
       y = "Puissance Totale Estimee (W)",
-      fill = "Séquence"
+      fill = "Sequence"
     ) +
     ggplot2::scale_y_continuous(limits = c(0, y_max)) +
     ggplot2::theme_minimal() +

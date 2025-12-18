@@ -21,7 +21,7 @@
 #' @examples
 #' \dontrun{
 #' VDDs <- seq(0.8, 1.2, length.out = 10)
-#' Freqs <- seq(0.5e9, 2.5e9, length.out = 10) # Augmenté le nombre de points pour meilleure animation
+#' Freqs <- seq(0.5e9, 2.5e9, length.out = 10) # Augmente le nombre de points pour meilleure animation
 #' sensitivity_outputs <- plot_power_sensitivity(0.15, 60e-12, VDDs, Freqs)
 #' }
 #' @export
@@ -32,7 +32,7 @@ plot_power_sensitivity <- function(alpha_fixed, C_L_fixed, V_DD_range, f_range, 
   power_calc <- function(V, F) { return(K * V^2 * F) }
   power_matrix <- base::outer(X = V_DD_range, Y = f_range, FUN = power_calc)
 
-  # 2. Préparation des données pour ggplot2 (Format long)
+  # 2. Preparation des donnees pour ggplot2 (Format long)
   sensitivity_df <- as.data.frame(power_matrix)
   colnames(sensitivity_df) <- paste0("F", 1:length(f_range))
   sensitivity_df$VDD_V <- V_DD_range
@@ -44,18 +44,18 @@ plot_power_sensitivity <- function(alpha_fixed, C_L_fixed, V_DD_range, f_range, 
     values_to = "Power_W"
   )
 
-  # Ajout des vraies valeurs de fréquence et VDD pour la légende et les axes
+  # Ajout des vraies valeurs de frequence et VDD pour la legende et les axes
   f_label_map <- data.frame(Frequency_Label = paste0("F", 1:length(f_range)),
                             Freq_GHz = f_range / 1e9)
   df_long <- dplyr::left_join(df_long, f_label_map, by = "Frequency_Label")
 
-  # Conversion en facteurs pour la légende pour VDD (utile pour l'animation par VDD)
+  # Conversion en facteurs pour la legende pour VDD (utile pour l'animation par VDD)
   df_long$VDD_Factor <- factor(df_long$VDD_V, levels = sort(unique(df_long$VDD_V)))
   df_long$Freq_Factor <- factor(df_long$Freq_GHz, levels = sort(unique(df_long$Freq_GHz)))
 
 
-  # --- Graphique 1 : P_dyn vs VDD (avec 5 courbes de fréquence) ---
-  # Le grouping est implicitement géré par 'color = Freq_Factor'
+  # --- Graphique 1 : P_dyn vs VDD (avec 5 courbes de frequence) ---
+  # Le grouping est implicitement gere par 'color = Freq_Factor'
   output_dir <- file.path("inst", "graphics")
 
   plot_vdd_vs_freq <- ggplot2::ggplot(df_long, ggplot2::aes(x = VDD_V, y = Power_W, color = Freq_Factor)) +
@@ -63,7 +63,7 @@ plot_power_sensitivity <- function(alpha_fixed, C_L_fixed, V_DD_range, f_range, 
     ggplot2::geom_point(size = 2) +
     ggplot2::labs(
       title = "P_dyn vs. VDD",
-      subtitle = "Chaque courbe représente une frequence differente",
+      subtitle = "Chaque courbe represente une frequence differente",
       x = "Tension d'Alimentation (V)",
       y = "Puissance Dynamique (W)",
       color = "Frequence (GHz)"
@@ -76,7 +76,7 @@ plot_power_sensitivity <- function(alpha_fixed, C_L_fixed, V_DD_range, f_range, 
   message(paste("Graphique P_dyn vs VDD enregistre dans :", output_vdd_pdf))
 
   # --- Animation 1 : P_dyn vs VDD (points progressifs) ---
-  # L'animation se déroule le long de l'axe X (VDD_V)
+  # L'animation se deroule le long de l'axe X (VDD_V)
   anim_vdd_vs_freq <- plot_vdd_vs_freq +
     gganimate::transition_reveal(VDD_V) +
     gganimate::ease_aes('linear') +
@@ -85,21 +85,21 @@ plot_power_sensitivity <- function(alpha_fixed, C_L_fixed, V_DD_range, f_range, 
   output_vdd_mp4 <- file.path(output_dir, paste0(base_output_filename_base, "_VDD.mp4"))
   gganimate::animate(anim_vdd_vs_freq,
                      renderer = gganimate::av_renderer(), # Utilise av pour MP4
-                     width = 3840, height = 2160,          # Résolution 4K
+                     width = 3840, height = 2160,          # Resolution 4K
                      res = 300,                            # DPI pour la sortie
                      fps = 10,                             # Cadres par seconde
-                     duration = length(V_DD_range) * 0.5)  # Durée totale de l'animation
+                     duration = length(V_DD_range) * 0.5)  # Duree totale de l'animation
   gganimate::anim_save(output_vdd_mp4, animation = gganimate::last_animation())
   message(paste("Video P_dyn vs VDD animee enregistree dans :", output_vdd_mp4))
 
 
-  # --- Graphique 2 : P_dyn vs Fréquence (avec 5 courbes de VDD) ---
-  # Le grouping est implicitement géré par 'color = VDD_Factor'
+  # --- Graphique 2 : P_dyn vs Frequence (avec 5 courbes de VDD) ---
+  # Le grouping est implicitement gere par 'color = VDD_Factor'
   plot_freq_vs_vdd <- ggplot2::ggplot(df_long, ggplot2::aes(x = Freq_GHz, y = Power_W, color = VDD_Factor)) +
     ggplot2::geom_line(linewidth = 0.8) +
     ggplot2::geom_point(size = 2) +
     ggplot2::labs(
-      title = "P_dyn vs. Fréquence",
+      title = "P_dyn vs. Frequence",
       subtitle = "Chaque courbe represente une tension VDD differente",
       x = "Frequence (GHz)",
       y = "Puissance Dynamique (W)",
@@ -113,8 +113,8 @@ plot_power_sensitivity <- function(alpha_fixed, C_L_fixed, V_DD_range, f_range, 
   message(paste("Graphique P_dyn vs Frequence enregistre dans :", output_freq_pdf))
 
 
-  # --- Animation 2 : P_dyn vs Fréquence (points progressifs) ---
-  # L'animation se déroule le long de l'axe X (Freq_GHz)
+  # --- Animation 2 : P_dyn vs Frequence (points progressifs) ---
+  # L'animation se deroule le long de l'axe X (Freq_GHz)
   anim_freq_vs_vdd <- plot_freq_vs_vdd +
     gganimate::transition_reveal(Freq_GHz) +
     gganimate::ease_aes('linear') +
@@ -123,7 +123,7 @@ plot_power_sensitivity <- function(alpha_fixed, C_L_fixed, V_DD_range, f_range, 
   output_freq_mp4 <- file.path(output_dir, paste0(base_output_filename_base, "_Freq.mp4"))
   gganimate::animate(anim_freq_vs_vdd,
                      renderer = gganimate::av_renderer(), # Utilise av pour MP4
-                     width = 3840, height = 2160,          # Résolution 4K
+                     width = 3840, height = 2160,          # Resolution 4K
                      res = 300,                            # DPI pour la sortie
                      fps = 10,
                      duration = length(f_range) * 0.5)

@@ -1,0 +1,6 @@
+pandoc: 3.6.3
+pkgdown: 2.2.0
+pkgdown_sha: ~
+articles:
+  Introduction_a_la_puissance_dynamique_en_circuits_VLSI: Introduction_a_la_puissance_dynamique_en_circuits_VLSI.html
+last_built: 2025-12-18T09:10Z

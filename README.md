@@ -1,54 +1,18 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+# VLSIDynPower <img src="man/figures/logo.png" align="right" height="139" />
 
-# VLSIDynPower
-
-<!-- badges: start -->
-
-<!-- badges: end -->
-
-The goal of VLSIDynPower is to provide tools for calculating and optimizing dynamic power consumption in Very Large Scale Integration (VLSI) circuits,
-    including switching activity analysis and Zero Transition Coding (ZTC).
+**VLSIDynPower** est un package R dédié à l’analyse, la visualisation et
+l’optimisation de la puissance dynamique ($P_{dyn}$) pour les circuits
+VLSI. Il permet aux concepteurs d’évaluer l’impact des variations de
+tension et de fréquence, et d’implémenter des stratégies de réduction
+d’activité comme le *Bus-Inversion Coding* (ZTC).
 
 ## Installation
 
-You can install the development version of VLSIPowerDyn from
-[GitHub](https://github.com/) with:
+Vous pouvez installer la version de développement de **VLSIDynPower**
+depuis GitHub :
 
 ``` r
-# install.packages("pak")
-pak::pak("aurelien-sema/VLSIPowerDyn")
+# install.packages("devtools")
+devtools::install_github("aurelien-sema/VLSIDynPower")
 ```
-
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-``` r
-library(VLSIDynPower)
-## basic example code
-```
-
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
-
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
-
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.

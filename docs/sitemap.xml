@@ -1,0 +1,19 @@
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/LICENSE-text.html</loc></url>
+<url><loc>/LICENSE.html</loc></url>
+<url><loc>/articles/Introduction_a_la_puissance_dynamique_en_circuits_VLSI.html</loc></url>
+<url><loc>/articles/index.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/reference/analyze_power_sensitivity.html</loc></url>
+<url><loc>/reference/apply_ztc_coding.html</loc></url>
+<url><loc>/reference/benchmark_power.html</loc></url>
+<url><loc>/reference/calculate_alpha_bit.html</loc></url>
+<url><loc>/reference/estimate_dynamic_power.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/plot_benchmark_power.html</loc></url>
+<url><loc>/reference/plot_power_sensitivity.html</loc></url>
+<url><loc>/reference/vlsi_data_stream.html</loc></url>
+</urlset>
+

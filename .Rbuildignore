@@ -1,2 +1,7 @@
 ^VLSIDynPower\.Rproj$
 ^\.Rproj\.user$
+^data-raw$
+^README\.Rmd$
+^LICENSE\.md$
+^\.github$
+^docs$

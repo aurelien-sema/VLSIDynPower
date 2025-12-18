@@ -36,7 +36,7 @@ Also generates two animated MP4 videos showing the sensitivity.
 \examples{
 \dontrun{
 VDDs <- seq(0.8, 1.2, length.out = 10)
-Freqs <- seq(0.5e9, 2.5e9, length.out = 10) # Augmenté le nombre de points pour meilleure animation
+Freqs <- seq(0.5e9, 2.5e9, length.out = 10) # Augmente le nombre de points pour meilleure animation
 sensitivity_outputs <- plot_power_sensitivity(0.15, 60e-12, VDDs, Freqs)
 }
 }
